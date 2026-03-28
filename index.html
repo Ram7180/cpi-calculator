@@ -973,23 +973,29 @@ async function fetchLatestCbs() {
   }, 12000);
 
   /* נסה GAS proxy קודם, אם הוגדר */
-  var GAS_PROXY = "";
-  if (GAS_PROXY && GAS_PROXY !== '') {
-    try {
-      const json    = await _fetchViaGas();
-      clearTimeout(window._cbsTimer);
-      const records = _parseCbsRecords(json);
-      if (!records.length) throw new Error('אין רשומות');
-      const { latest, added } = _applyRecords(records);
-      const month = String(latest.month??latest.Month??'').padStart(2,'0');
-      const year  = String(latest.year ??latest.Year ??'');
-      const value = Number(latest.value??latest.Value??0);
-      _fillCbsFields(month, year, value,
-        `✓ הנתונים עודכנו בהצלחה מהלמ"ס! מדד ${MONTHS[parseInt(month,10)-1]} ${year} = ${value}` +
-        (added > 0 ? ` · נוספו ${added} מדדים` : ''));
-      return;
-    } catch(e) {
-      console.warn('GAS proxy failed, trying JSONP:', e.message);
+      try {
+        // שימוש ב-Proxy חינמי כדי לעקוף את חסימת הלמ"ס
+        const targetUrl = 'https://cbs.gov.il';
+        const response = await fetch(`https://allorigins.win{encodeURIComponent(targetUrl)}`);
+        const wrapper = await response.json();
+        const json = JSON.parse(wrapper.contents);
+        
+        clearTimeout(window._cbsTimer);
+        
+        // כאן הקוד ממשיך לעבד את הנתונים כרגיל
+        const records = _parseCbsRecords(json);
+        if (!records.length) throw new Error('אין רשומות');
+        const { latest, added } = _applyRecords(records);
+        const month = String(latest.month??latest.Month??'').padStart(2,'0');
+        const year = String(latest.year??latest.Year??'');
+        const value = Number(latest.value??latest.Value??0);
+        _fillCbsFields(month, year, value);
+        status.textContent = `עודכן בהצלחה! מדד ${MONTHS[parseInt(month,10)-1]} ${year} = ${value}`;
+        return;
+    } catch (e) {
+        console.warn("ניסיון משיכה נכשל:", e.message);
+        // כאן הוא יעבור אוטומטית לניסיון בשיטת JSONP הישנה שכבר קיימת אצלך בקוד
+    }
       status.textContent = 'ה-Proxy נכשל, מנסה JSONP...';
     }
   }
