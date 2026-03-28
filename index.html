@@ -636,8 +636,8 @@ function updateSummary(orig, idx, n) {
 }
 
 /* ══════════════════════════════════════════════════════
-   CBS FETCH — GAS Proxy + JSONP fallback
-   הדבק את ה-URL שלך מ-Google Apps Script:
+   CBS FETCH — GAS Proxy via JSONP + direct JSONP fallback
+   GAS_PROXY: הכתובת של ה-Web App שלך ב-Google Scripts
 ══════════════════════════════════════════════════════ */
 const GAS_PROXY = 'https://script.google.com/macros/s/AKfycbzx2PW_lCEHMkEgjZalqf1pGc2fy5zRH-xuq2UTgx0XQqJLf2bQOiP7gBye_0IlsRsN/exec';
 
@@ -700,10 +700,13 @@ function _cbsError(msg) {
 }
 
 function _cbsCleanupScript() {
-  const s = document.getElementById('_cbsJsonpScript');
-  if (s) s.remove();
+  ['_cbsJsonpScript','_gasJsonpScript'].forEach(id => {
+    const s = document.getElementById(id);
+    if (s) s.remove();
+  });
 }
 
+/* callback גלובלי — נקרא ע"י JSONP (GAS או CBS ישיר) */
 window.processCBSData = function(data) {
   clearTimeout(window._cbsTimer);
   _cbsCleanupScript();
@@ -719,20 +722,57 @@ window.processCBSData = function(data) {
       `✓ הנתונים עודכנו בהצלחה מהלמ"ס! מדד ${MONTHS[parseInt(month,10)-1]} ${year} = ${value}` +
       (added > 0 ? ` · נוספו ${added} מדדים` : ''));
   } catch(e) {
-    _cbsError('שגיאה בעיבוד: ' + e.message);
+    console.warn('GAS JSONP callback error, trying CBS direct:', e.message);
+    _fetchViaCbsJsonp();
   }
 };
 
-function _fetchViaJsonp() {
-  _cbsCleanupScript();
+/* שליפה דרך GAS — JSONP (עוקף CORS לחלוטין) */
+function _fetchViaGasJsonp() {
+  const old = document.getElementById('_gasJsonpScript');
+  if (old) old.remove();
+  const s   = document.createElement('script');
+  s.id      = '_gasJsonpScript';
+  s.onerror = () => { s.remove(); _fetchViaCbsJsonp(); };
+  s.src     = GAS_PROXY + '?callback=processCBSData';
+  document.head.appendChild(s);
+}
+
+/* שליפה ישירה מ-CBS — JSONP (fallback) */
+function _fetchViaCbsJsonp() {
   const urls = [
     'https://api.cbs.gov.il/index/data/price?id=120010&format=json&download=false&callback=processCBSData',
     'https://api.cbs.gov.il/index/data/price_all?chapter=a&format=json&download=false&callback=processCBSData',
   ];
+  /* החלף callback זמנית כדי לטפל ב-fallback בנפרד */
+  const savedCb = window.processCBSData;
+  window.processCBSData = function(data) {
+    window.processCBSData = savedCb;
+    clearTimeout(window._cbsTimer);
+    _cbsCleanupScript();
+    try {
+      const records = _parseCbsRecords(data);
+      if (!records.length) throw new Error('אין רשומות');
+      const { latest, added } = _applyRecords(records);
+      const month = String(latest.month??latest.Month??'').padStart(2,'0');
+      const year  = String(latest.year??latest.Year??'');
+      const value = Number(latest.value??latest.Value??0);
+      if (!month||!year||!value) throw new Error('ערכים חסרים');
+      _fillCbsFields(month, year, value,
+        `✓ הנתונים עודכנו מהלמ"ס! מדד ${MONTHS[parseInt(month,10)-1]} ${year} = ${value}` +
+        (added > 0 ? ` · נוספו ${added} מדדים` : ''));
+    } catch(e) {
+      _cbsError('שגיאה בעיבוד: ' + e.message);
+    }
+  };
   let idx = 0;
   function tryNext() {
     _cbsCleanupScript();
-    if (idx >= urls.length) { _cbsError('הלמ"ס לא הגיב'); return; }
+    if (idx >= urls.length) {
+      window.processCBSData = savedCb;
+      _cbsError('הלמ"ס לא הגיב');
+      return;
+    }
     const s   = document.createElement('script');
     s.id      = '_cbsJsonpScript';
     s.onerror = () => { idx++; tryNext(); };
@@ -742,7 +782,7 @@ function _fetchViaJsonp() {
   tryNext();
 }
 
-async function fetchLatestCbs() {
+function fetchLatestCbs() {
   const btn    = document.getElementById('btnFetchCbs');
   const icon   = document.getElementById('fetchCbsIcon');
   const status = document.getElementById('fetchCbsStatus');
@@ -754,33 +794,14 @@ async function fetchLatestCbs() {
   window._cbsTimer = setTimeout(() => {
     _cbsCleanupScript();
     _cbsError('הלמ"ס לא הגיב (timeout)');
-  }, 12000);
+  }, 15000);
 
-  /* נסה GAS proxy קודם */
+  /* GAS קודם (JSONP — ללא CORS לחלוטין), אחר כך CBS ישיר */
   if (GAS_PROXY) {
-    try {
-      const r = await fetch(GAS_PROXY);
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      const json    = await r.json();
-      if (json.success === false) throw new Error(json.error || 'GAS error');
-      clearTimeout(window._cbsTimer);
-      const records = _parseCbsRecords(json);
-      if (!records.length) throw new Error('אין רשומות');
-      const { latest, added } = _applyRecords(records);
-      const month = String(latest.month??latest.Month??'').padStart(2,'0');
-      const year  = String(latest.year??latest.Year??'');
-      const value = Number(latest.value??latest.Value??0);
-      _fillCbsFields(month, year, value,
-        `✓ הנתונים עודכנו בהצלחה מהלמ"ס! מדד ${MONTHS[parseInt(month,10)-1]} ${year} = ${value}` +
-        (added > 0 ? ` · נוספו ${added} מדדים` : ''));
-      return;
-    } catch(e) {
-      console.warn('GAS proxy failed, trying JSONP:', e.message);
-      status.textContent = 'ה-Proxy נכשל, מנסה JSONP...';
-    }
+    _fetchViaGasJsonp();
+  } else {
+    _fetchViaCbsJsonp();
   }
-
-  _fetchViaJsonp();
 }
 
 /* ══════════════════════════════════════════════════════
