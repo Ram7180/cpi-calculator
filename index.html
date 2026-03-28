@@ -958,6 +958,8 @@ function _fetchViaJsonp() {
 
 /* ── הפונקציה הראשית — נקראת מהכפתור ── */
 async function fetchLatestCbs() {
+var GAS_PROXY = "";
+function toggleMP() { document.getElementById('mpBody').classList.toggle('open'); }
   const btn    = document.getElementById('btnFetchCbs');
   const icon   = document.getElementById('fetchCbsIcon');
   const status = document.getElementById('fetchCbsStatus');
