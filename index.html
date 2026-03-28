@@ -21,8 +21,6 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Heebo',Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;direction:rtl}
-
-/* HEADER */
 header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:28px 40px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
 header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
 .hdr-left{position:relative;z-index:1}
@@ -36,18 +34,12 @@ header::before{content:'';position:absolute;inset:0;background:url("data:image/s
 .btn-hdr:disabled{opacity:.4;cursor:not-allowed}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin{display:inline-block;animation:spin .8s linear infinite}
-
-/* STATUS */
 #statusBar{padding:10px 40px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
 #statusBar.loading{background:#e8eef8;color:var(--primary)}
 #statusBar.success{background:var(--success-bg);color:var(--success)}
 #statusBar.error{background:var(--danger-bg);color:var(--danger)}
 .spinner{width:14px;height:14px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
-
-/* MAIN */
 main{padding:32px 40px 40px;max-width:1400px;margin:0 auto}
-
-/* CARD */
 .card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden;margin-bottom:24px}
 .table-wrapper{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px}
@@ -57,14 +49,10 @@ tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
 tbody tr:hover{background:#f5f7fc}
 tbody tr:last-child{border-bottom:none}
 tbody td{padding:10px 14px;vertical-align:middle}
-
-/* INPUTS */
 input,select{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:13.5px;color:var(--text);background:var(--surface-alt);transition:border-color .2s,box-shadow .2s;direction:rtl}
 input:focus,select:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(37,80,160,.12);background:#fff}
 input[type="number"]{text-align:left;direction:ltr}
 .sel-date{min-width:90px}
-
-/* RESULT */
 .cell-pct{font-weight:700;font-size:14px;text-align:center;min-width:80px;padding:4px 8px;border-radius:6px}
 .cell-pct.pos{color:var(--success);background:var(--success-bg)}
 .cell-pct.neg{color:var(--danger);background:var(--danger-bg)}
@@ -73,12 +61,9 @@ input[type="number"]{text-align:left;direction:ltr}
 .badge-manual{font-size:10.5px;font-weight:600;color:var(--accent);background:#fff4e0;border:1px solid #f0c060;border-radius:4px;padding:1px 6px;margin-top:3px;display:inline-block}
 .badge-floor{font-size:10.5px;font-weight:600;color:var(--info);background:var(--info-bg);border:1px solid #a0c8e8;border-radius:4px;padding:1px 6px;margin-top:3px;display:inline-block}
 .idx-detail{display:block;font-size:10px;color:var(--text-muted);margin-top:3px;white-space:nowrap}
-/* columns visible only in print */
 .print-only{display:none}
 @media print{ .print-only{display:table-cell!important} }
 .row-warn{font-size:12px;color:var(--warning);background:var(--warning-bg);border-radius:5px;padding:3px 8px;margin-top:4px;display:none}
-
-/* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:transform .12s,box-shadow .15s,opacity .2s;white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
@@ -90,12 +75,8 @@ input[type="number"]{text-align:left;direction:ltr}
 .btn-ghost:hover:not(:disabled){background:var(--bg);color:var(--text)}
 .btn-del{background:transparent;color:var(--danger);border:none;padding:6px 8px;font-size:16px;cursor:pointer;border-radius:6px;font-family:inherit}
 .btn-del:hover{background:var(--danger-bg)}
-
-/* ACTIONS */
 .actions-row{display:flex;align-items:center;gap:12px;padding:20px;flex-wrap:wrap;border-top:1px solid var(--border);background:var(--surface-alt)}
 .spacer{flex:1}
-
-/* SUMMARY */
 #summarySection{display:none;margin-bottom:24px}
 .summary-card{background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--radius);padding:24px 32px;color:#fff;display:flex;gap:40px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
 .sum-item{display:flex;flex-direction:column;gap:4px}
@@ -103,8 +84,6 @@ input[type="number"]{text-align:left;direction:ltr}
 .sum-value{font-size:28px;font-weight:800;letter-spacing:-.5px}
 .sum-divider{width:1px;height:56px;background:rgba(255,255,255,.2)}
 .sum-change{font-size:18px;font-weight:700;padding:6px 14px;background:rgba(255,255,255,.15);border-radius:8px;margin-top:4px;display:inline-block}
-
-/* MANUAL PANEL */
 .manual-panel{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-md);margin-bottom:24px;overflow:hidden}
 .mp-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;user-select:none;background:var(--surface-alt);border-bottom:1px solid var(--border);transition:background .15s}
 .mp-hdr:hover{background:#eef0f7}
@@ -134,133 +113,36 @@ input[type="number"]{text-align:left;direction:ltr}
 
 /* PRINT */
 @media print{
-  /* ── 1. כפיית צבע מלא בכל הדפדפנים ── */
-  *, *::before, *::after{
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    color-adjust: exact !important;
-    box-sizing: border-box !important;
-  }
-
-  /* ── 2. גוף ודף נקיים מהשוליים ── */
-  body{
-    background: #fff !important;
-    font-size: 11px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    direction: rtl !important;
-  }
-  main{
-    padding: 4px 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    display: block !important;
-  }
-  header{
-    background: #1a3a6c !important;
-    padding: 8px 14px !important;
-    width: 100% !important;
-  }
-
-  /* ── 3. הסתרת אלמנטים שאינם להדפסה ── */
-  #statusBar, .no-print, .btn,
-  .actions-row, .manual-panel, .row-warn{
-    display: none !important;
-  }
-
-  /* ── 4. כרטיס וטבלה — פריסה מלאה ── */
-  .card{
-    box-shadow: none !important;
-    border: 1px solid #bbb !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: visible !important;
-    page-break-inside: avoid !important;
-  }
-  .table-wrapper{
-    overflow: visible !important;
-    width: 100% !important;
-  }
-
-  /* ── 5. טבלה: רוחב מלא, עמודות קבועות ── */
-  table{
-    width: 100% !important;
-    max-width: 100% !important;
-    table-layout: fixed !important;   /* מחלק רוחב שווה + מונע חיתוך */
-    border-collapse: collapse !important;
-    font-size: 10px !important;
-  }
-  thead tr{
-    background: #1a3a6c !important;
-    color: #fff !important;
-  }
-  th, td{
-    padding: 4px 5px !important;
-    word-break: break-word !important;
-    overflow: hidden !important;
-    white-space: normal !important;
-    vertical-align: middle !important;
-    border: 1px solid #ccc !important;
-    text-overflow: ellipsis !important;
-  }
-
-  /* ── 6. רוחבי עמודות ספציפיים (col index, 1-based) ──
-     1=#  2=תיאור  3=סכום-מקורי  4=חודש-התחלה  5=שנה-התחלה
-     6=מדד-התחלה(print)  7=חודש-סיום  8=שנה-סיום  9=מדד-סיום(print)
-     10=אחוז-שינוי  11=סכום-מוצמד  12=✕(no-print)            */
-  th:nth-child(1),  td:nth-child(1)  { width: 3% !important; }   /* # */
-  th:nth-child(2),  td:nth-child(2)  { width: 10% !important; }  /* תיאור */
-  th:nth-child(3),  td:nth-child(3)  { width: 9% !important; }   /* סכום מקורי */
-  th:nth-child(4),  td:nth-child(4)  { width: 9% !important; }   /* חודש התחלה — same as סכום מקורי */
-  th:nth-child(5),  td:nth-child(5)  { width: 7% !important; }   /* שנת התחלה */
-  th:nth-child(6),  td:nth-child(6)  { width: 8% !important; text-align: center !important; } /* מדד התחלה */
-  th:nth-child(7),  td:nth-child(7)  { width: 9% !important; }   /* חודש סיום */
-  th:nth-child(8),  td:nth-child(8)  { width: 7% !important; }   /* שנת סיום */
-  th:nth-child(9),  td:nth-child(9)  { width: 8% !important; text-align: center !important; } /* מדד סיום */
-  th:nth-child(10), td:nth-child(10) { width: 8% !important; text-align: center !important; } /* אחוז שינוי */
-  th:nth-child(11), td:nth-child(11) { width: 14% !important; }  /* סכום מוצמד */
-  th:nth-child(12), td:nth-child(12) { display: none !important; } /* כפתור ✕ */
-
-  /* ── 7. שדות קלט: שקופים, בלי גבול ── */
-  input, select{
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 1px 2px !important;
-    font-size: 10px !important;
-    width: 100% !important;
-  }
-
-  /* ── 8. הצגת עמודות מדד (print-only) ── */
-  .print-only{ display: table-cell !important; }
-
-  /* ── 9. הסתרת פירוט מדדים מתחת לסכום המוצמד ── */
-  .idx-detail{ display: none !important; }
-  .badge-manual, .badge-floor{ font-size: 8px !important; }
-
-  /* ── 10. הסתרת עמודת 'תיאור' כשכולה ריקה (class מוסף ב-JS) ──
-     כשהמקום מוסר, שאר העמודות מתרחבות אוטומטית (table-layout:fixed) */
-  table.hide-desc th:nth-child(2),
-  table.hide-desc td:nth-child(2){
-    display: none !important;
-    width: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-  }
-
-  /* ── 11. סיכום ── */
-  #summarySection{ display: block !important; margin-top: 6px !important; }
-  .summary-card{
-    background: #1a3a6c !important;
-    padding: 10px 16px !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 16px !important;
-  }
-  .footer-note{ font-size: 8px !important; }
+  *, *::before, *::after{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important;box-sizing:border-box !important}
+  body{background:#fff !important;font-size:11px !important;margin:0 !important;padding:0 !important;width:100% !important;direction:rtl !important}
+  main{padding:4px 0 !important;width:100% !important;max-width:100% !important;margin:0 !important;display:block !important}
+  header{background:#1a3a6c !important;padding:8px 14px !important;width:100% !important}
+  #statusBar,.no-print,.btn,.actions-row,.manual-panel,.row-warn{display:none !important}
+  .card{box-shadow:none !important;border:1px solid #bbb !important;width:100% !important;max-width:100% !important;overflow:visible !important;page-break-inside:avoid !important}
+  .table-wrapper{overflow:visible !important;width:100% !important}
+  table{width:100% !important;max-width:100% !important;table-layout:fixed !important;border-collapse:collapse !important;font-size:10px !important}
+  thead tr{background:#1a3a6c !important;color:#fff !important}
+  th,td{padding:4px 5px !important;word-break:break-word !important;overflow:hidden !important;white-space:normal !important;vertical-align:middle !important;border:1px solid #ccc !important;text-overflow:ellipsis !important}
+  th:nth-child(1),td:nth-child(1){width:3% !important}
+  th:nth-child(2),td:nth-child(2){width:10% !important}
+  th:nth-child(3),td:nth-child(3){width:9% !important}
+  th:nth-child(4),td:nth-child(4){width:9% !important}
+  th:nth-child(5),td:nth-child(5){width:7% !important}
+  th:nth-child(6),td:nth-child(6){width:8% !important;text-align:center !important}
+  th:nth-child(7),td:nth-child(7){width:9% !important}
+  th:nth-child(8),td:nth-child(8){width:7% !important}
+  th:nth-child(9),td:nth-child(9){width:8% !important;text-align:center !important}
+  th:nth-child(10),td:nth-child(10){width:8% !important;text-align:center !important}
+  th:nth-child(11),td:nth-child(11){width:14% !important}
+  th:nth-child(12),td:nth-child(12){display:none !important}
+  input,select{border:none !important;background:transparent !important;box-shadow:none !important;padding:1px 2px !important;font-size:10px !important;width:100% !important}
+  .print-only{display:table-cell !important}
+  .idx-detail{display:none !important}
+  .badge-manual,.badge-floor{font-size:8px !important}
+  table.hide-desc th:nth-child(2),table.hide-desc td:nth-child(2){display:none !important;width:0 !important;padding:0 !important;border:none !important}
+  #summarySection{display:block !important;margin-top:6px !important}
+  .summary-card{background:#1a3a6c !important;padding:10px 16px !important;width:100% !important;display:flex !important;flex-wrap:wrap !important;gap:16px !important}
+  .footer-note{font-size:8px !important}
 }
 @media(max-width:900px){
   header{padding:20px}
@@ -272,6 +154,7 @@ input[type="number"]{text-align:left;direction:ltr}
 }
 </style>
 <style id="printPageStyle">@page{ size: auto; margin: 10mm; }</style>
+</head>
 <body>
 
 <header>
@@ -292,7 +175,7 @@ input[type="number"]{text-align:left;direction:ltr}
 
 <div id="statusBar" class="loading">
   <div class="spinner"></div>
-  <span id="statusText">טוען נתונים מעודכנים מהלמ"ס...</span>
+  <span id="statusText">טוען...</span>
 </div>
 
 <main>
@@ -374,15 +257,11 @@ input[type="number"]{text-align:left;direction:ltr}
         </div>
         <div class="mp-field">
           <label>&nbsp;</label>
-          <button class="btn btn-primary" onclick="addManualIndex()" style="padding:8px 18px;font-size:13px">
-            ＋ הוסף למאגר
-          </button>
+          <button class="btn btn-primary" onclick="addManualIndex()" style="padding:8px 18px;font-size:13px">＋ הוסף למאגר</button>
         </div>
         <div class="mp-field">
           <label>&nbsp;</label>
-          <button class="btn btn-ghost" onclick="clearAllManual()" style="padding:8px 14px;font-size:13px">
-            🗑 נקה הכל
-          </button>
+          <button class="btn btn-ghost" onclick="clearAllManual()" style="padding:8px 14px;font-size:13px">🗑 נקה הכל</button>
         </div>
       </div>
       <div class="mp-fb" id="mpFb"></div>
@@ -401,14 +280,12 @@ input[type="number"]{text-align:left;direction:ltr}
       </div>
     </div>
   </div>
-  </div>
 
   <div class="footer-note">
     הנתונים נמשכים מ-API של הלשכה המרכזית לסטטיסטיקה (למ"ס) · מדד המחירים לצרכן הכללי ·
     מדדי 2024 ומטה: בסיס 2022=100 · מדדי 2025 ומעלה: בסיס 2024=100 (מקדם קישור: 1.058) ·
     אין באמור ייעוץ משפטי או כלכלי
   </div>
-
 </main>
 
 <script>
@@ -418,30 +295,18 @@ input[type="number"]{text-align:left;direction:ltr}
 const MONTHS = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני',
                 'יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
 const MAX_ROWS = 24;
-
-/*
-  CHAIN-INDEX CONSTANTS
-  ─────────────────────
-  • Data up to Dec-2024  → base 2022 = 100
-  • Data from Jan-2025   → base 2024 = 100
-  • Official link factor: index_base2024 × 1.058 = index_base2022
-  • To compare two months on the SAME base we normalise everything
-    to base-2022 before dividing:
-      normalise(key, value) → value-in-base-2022
-*/
-const BASE_CHANGE_KEY   = '2025-01';   // first month on new base
-const LINK_FACTOR       = 1.058;       // multiply base-2024 → base-2022
+const BASE_CHANGE_KEY = '2025-01';
+const LINK_FACTOR     = 1.058;
 
 function normalise(key, value) {
-  /* Convert any index value to base-2022 for comparison */
   return key >= BASE_CHANGE_KEY ? value * LINK_FACTOR : value;
 }
 
 /* ══════════════════════════════════════════════════════
    STATE
 ══════════════════════════════════════════════════════ */
-let apiData    = {};   // { "YYYY-MM": number }  from CBS / fallback
-let manualData = {};   // { "YYYY-MM": number }  entered by user — always in native base
+let apiData    = {};
+let manualData = {};
 let rowCount   = 0;
 let dataReady  = false;
 
@@ -456,11 +321,7 @@ function setStatus(msg, type) {
 }
 
 /* ══════════════════════════════════════════════════════
-   EMBEDDED DATA (offline-first)
-   • 2015–2024 : base 2022 = 100
-   • 2025+     : base 2024 = 100  (link factor 1.058)
-   • Source: CBS official press releases
-   • To add newer months use the manual entry panel
+   EMBEDDED DATA
 ══════════════════════════════════════════════════════ */
 function getAllData() {
   return {
@@ -484,7 +345,6 @@ function getAllData() {
     '2023-07':104.3,'2023-08':104.6,'2023-09':105.3,'2023-10':105.4,'2023-11':105.3,'2023-12':105.4,
     '2024-01':105.8,'2024-02':106.2,'2024-03':107.5,'2024-04':108.3,'2024-05':108.6,'2024-06':108.4,
     '2024-07':108.7,'2024-08':108.9,'2024-09':109.5,'2024-10':109.8,'2024-11':109.8,'2024-12':110.1,
-    /* base 2024=100 from here */
     '2025-01':100.5,'2025-02':101.0,'2025-03':101.4,'2025-04':101.7,'2025-05':101.9,'2025-06':101.8,
     '2025-07':101.9,'2025-08':102.0,'2025-09':102.4,'2025-10':102.6,'2025-11':102.6,'2025-12':102.7,
     '2026-01':103.3,'2026-02':103.5
@@ -492,15 +352,15 @@ function getAllData() {
 }
 
 /* ══════════════════════════════════════════════════════
-   PERSISTENCE — שמירת מדדים ידניים ב-localStorage
+   PERSISTENCE
 ══════════════════════════════════════════════════════ */
 const STORAGE_KEY = 'cpi_manual_data_v1';
+const CACHE_KEY   = 'cpi_live_cache_v1';
 
 function saveManualData() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(manualData)); }
   catch(e) { console.warn('localStorage save failed:', e); }
 }
-
 function loadManualData() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -508,21 +368,15 @@ function loadManualData() {
     const parsed = JSON.parse(raw);
     if (typeof parsed !== 'object' || Array.isArray(parsed)) return {};
     const clean = {};
-    Object.entries(parsed).forEach(([k, v]) => {
+    Object.entries(parsed).forEach(([k,v]) => {
       if (/^\d{4}-\d{2}$/.test(k) && typeof v === 'number' && v > 0) clean[k] = v;
     });
     return clean;
   } catch(e) { return {}; }
 }
-
-/* ══════════════════════════════════════════════════════
-   LIVE CACHE — localStorage (12h TTL)
-══════════════════════════════════════════════════════ */
-const CACHE_KEY = 'cpi_live_cache_v1';
-
 function saveLiveCache(data) {
   try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); }
-  catch(e) { console.warn('cache save:', e); }
+  catch(e) {}
 }
 function loadLiveCache() {
   try {
@@ -534,23 +388,26 @@ function loadLiveCache() {
   return null;
 }
 
-function load2026Defaults() { /* embedded in getAllData */ }
-
 /* ══════════════════════════════════════════════════════
    INIT
 ══════════════════════════════════════════════════════ */
-async function init() {
+function init() {
   apiData    = getAllData();
   manualData = loadManualData();
   const embCount  = Object.keys(apiData).length;
   const embLatest = Object.keys(apiData).sort().pop();
 
-  /* Step 1: show embedded data immediately — fully usable */
+  const cached = loadLiveCache();
+  if (cached && Object.keys(cached).length >= 12) {
+    apiData = Object.assign({}, getAllData(), cached);
+  }
+
+  const latest = Object.keys(apiData).sort().pop();
   setStatus(
-    `✓ ${embCount} מדדים מוטמעים (2015–${fmtKey(embLatest)}) · לנתונים עדכניים לחץ "נסה לשלוף מהלמ"ס"`,
+    `✓ ${Object.keys(apiData).length} מדדים (עד ${fmtKey(latest)}) · לעדכון לחץ "נסה לשלוף מהלמ"ס"`,
     'success'
   );
-  document.getElementById('indexCount').textContent = embCount;
+  document.getElementById('indexCount').textContent = Object.keys(apiData).length;
   ['btnAdd','btnCalc','btnRefresh'].forEach(id =>
     document.getElementById(id).disabled = false);
   document.getElementById('refreshIcon').className = '';
@@ -560,30 +417,16 @@ async function init() {
   addRow();
   document.getElementById('mpBody').classList.add('open');
   document.getElementById('mpChev').classList.add('open');
-
-  /* Step 2: merge localStorage cache if fresh */
-  const cached = loadLiveCache();
-  if (cached && Object.keys(cached).length >= 12) {
-    apiData = Object.assign({}, getAllData(), cached);
-    const latest = Object.keys(apiData).sort().pop();
-    setStatus(
-      `✓ ${Object.keys(apiData).length} מדדים (כולל עדכונים שמורים) · עד ${fmtKey(latest)}`,
-      'success'
-    );
-    document.getElementById('indexCount').textContent = Object.keys(apiData).length;
-    rebuildYearSelects();
-  }
-  /* No background network call — user triggers JSONP manually via "נסה לשלוף מהלמ"ס" */
 }
 
 function refreshData() {
-  /* Merge latest manual + cached data, then suggest JSONP button */
   manualData = loadManualData();
   const cached = loadLiveCache();
-  if (cached) apiData = Object.assign({}, getAllData(), cached);
+  if (cached && Object.keys(cached).length >= 12)
+    apiData = Object.assign({}, getAllData(), cached);
   const latest = Object.keys(apiData).sort().pop();
   setStatus(
-    `✓ ${Object.keys(apiData).length} מדדים · עד ${fmtKey(latest)} · לעדכון חי לחץ "נסה לשלוף מהלמ"ס"`,
+    `✓ ${Object.keys(apiData).length} מדדים · עד ${fmtKey(latest)}`,
     'success'
   );
   document.getElementById('indexCount').textContent = Object.keys(apiData).length;
@@ -593,13 +436,12 @@ function refreshData() {
   renderManualList();
 }
 
-
 /* ══════════════════════════════════════════════════════
    YEAR HELPERS
 ══════════════════════════════════════════════════════ */
 function getYears() {
   const set = new Set();
-  Object.keys(apiData).forEach(k   => set.add(k.split('-')[0]));
+  Object.keys(apiData).forEach(k    => set.add(k.split('-')[0]));
   Object.keys(manualData).forEach(k => set.add(k.split('-')[0]));
   if (!set.size) {
     const y = new Date().getFullYear();
@@ -607,17 +449,14 @@ function getYears() {
   }
   return [...set].sort();
 }
-
 function buildManualYearSelect() {
   const sel = document.getElementById('mYear');
   const cur = new Date().getFullYear();
-  let html  = '';
-  for (let y = cur + 5; y >= 1951; y--) {
-    html += `<option value="${y}"${y === cur ? ' selected' : ''}>${y}</option>`;
-  }
+  let html = '';
+  for (let y = cur+5; y >= 1951; y--)
+    html += `<option value="${y}"${y===cur?' selected':''}>${y}</option>`;
   sel.innerHTML = html;
 }
-
 function rebuildYearSelects() {
   const years = getYears();
   document.querySelectorAll('#tableBody tr').forEach(row => {
@@ -626,11 +465,10 @@ function rebuildYearSelects() {
     [sels[1], sels[3]].forEach(sel => {
       const cur = sel.value;
       sel.innerHTML = years.map(y => `<option value="${y}">${y}</option>`).join('');
-      sel.value = years.includes(cur) ? cur : years[years.length - 1];
+      sel.value = years.includes(cur) ? cur : years[years.length-1];
     });
   });
 }
-
 function buildMonthSel(sel) {
   return '<select class="sel-date">' +
     MONTHS.map((m,i) => {
@@ -638,31 +476,26 @@ function buildMonthSel(sel) {
       return `<option value="${v}"${v===sel?' selected':''}>${m}</option>`;
     }).join('') + '</select>';
 }
-
 function buildYearSel(sel) {
   return '<select class="sel-date">' +
     getYears().map(y => `<option value="${y}"${y===sel?' selected':''}>${y}</option>`).join('') +
     '</select>';
 }
-
 function defaultDates() {
   const apiKeys = Object.keys(apiData).sort();
   if (!apiKeys.length) {
     const n = new Date();
-    return { sm:'01', sy:String(n.getFullYear()-5),
+    return { sm:'01', sy:String(n.getFullYear()-1),
              em:String(n.getMonth()+1).padStart(2,'0'), ey:String(n.getFullYear()) };
   }
   const [ly, lm] = apiKeys[apiKeys.length-1].split('-');
-  const [fy]     = apiKeys[0].split('-');
   return { sm:'01', sy:'2024', em:lm, ey:ly };
 }
-
 function fmtKey(key) {
   if (!key) return '—';
   const [y, m] = key.split('-');
   return `${MONTHS[parseInt(m)-1]} ${y}`;
 }
-
 function fmtNIS(n) {
   return '₪' + n.toLocaleString('he-IL', {minimumFractionDigits:2, maximumFractionDigits:2});
 }
@@ -683,10 +516,10 @@ function addRow() {
     <td><input type="number" placeholder="0.00" min="0" step="0.01" style="min-width:70px;max-width:90px"></td>
     <td>${buildMonthSel(d.sm)}</td>
     <td>${buildYearSel(d.sy)}</td>
-    <td class="print-only" id="idx-s-${id}" style="font-size:12px;color:var(--text-muted);white-space:nowrap">—</td>
+    <td class="print-only" id="idx-s-${id}" style="font-size:12px;color:var(--text-muted)">—</td>
     <td>${buildMonthSel(d.em)}</td>
     <td>${buildYearSel(d.ey)}</td>
-    <td class="print-only" id="idx-e-${id}" style="font-size:12px;color:var(--text-muted);white-space:nowrap">—</td>
+    <td class="print-only" id="idx-e-${id}" style="font-size:12px;color:var(--text-muted)">—</td>
     <td style="text-align:center"><div id="pct-${id}" class="cell-pct zero">—</div></td>
     <td>
       <div id="res-${id}" class="cell-result" style="color:var(--text-muted)">—</div>
@@ -697,7 +530,6 @@ function addRow() {
   document.getElementById('tableBody').appendChild(tr);
   tr.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
-
 function removeRow(id) {
   const r = document.getElementById(`row-${id}`);
   if (r) r.remove();
@@ -705,28 +537,18 @@ function removeRow(id) {
 }
 
 /* ══════════════════════════════════════════════════════
-   LOOKUP — manual wins; normalise to base-2022
+   LOOKUP & CALCULATION
 ══════════════════════════════════════════════════════ */
 function lookupNorm(key) {
-  /* Returns { norm: value-in-base-2022, manual: bool } or null */
   let raw, isManual;
-  if (key in manualData) {
-    raw      = manualData[key];
-    isManual = true;
-  } else if (key in apiData) {
-    raw      = apiData[key];
-    isManual = false;
-  } else {
-    return null;
-  }
+  if (key in manualData)       { raw = manualData[key]; isManual = true;  }
+  else if (key in apiData)     { raw = apiData[key];    isManual = false; }
+  else return null;
   return { norm: normalise(key, raw), manual: isManual };
 }
 
-/* ══════════════════════════════════════════════════════
-   CALCULATION — chain-index aware
-══════════════════════════════════════════════════════ */
 function calcRow(id) {
-  const row  = document.getElementById(`row-${id}`);
+  const row    = document.getElementById(`row-${id}`);
   if (!row) return null;
   const sels   = [...row.querySelectorAll('select')].filter(s => s.classList.contains('sel-date'));
   const amount = parseFloat(row.querySelector('input[type="number"]').value);
@@ -752,31 +574,25 @@ function calcRow(id) {
 
   if (sk > ek) { fail('⚠️ תאריך ההתחלה מאוחר מתאריך הסיום','שגיאה'); return null; }
 
-  /* "Not yet published": beyond latest known key and not in manualData */
   const allKnown  = [...Object.keys(apiData), ...Object.keys(manualData)].sort();
-  const latestKey = allKnown[allKnown.length - 1] || '';
+  const latestKey = allKnown[allKnown.length-1] || '';
   const notYet    = k => !(k in apiData) && !(k in manualData) && k > latestKey;
 
-  if (notYet(sk)) { fail(`⚠️ המדד לחודש ${fmtKey(sk)} טרם פורסם על ידי הלמ"ס`,'טרם פורסם'); return null; }
-  if (notYet(ek)) { fail(`⚠️ המדד לחודש ${fmtKey(ek)} טרם פורסם על ידי הלמ"ס`,'טרם פורסם'); return null; }
+  if (notYet(sk)) { fail(`⚠️ המדד לחודש ${fmtKey(sk)} טרם פורסם`,'טרם פורסם'); return null; }
+  if (notYet(ek)) { fail(`⚠️ המדד לחודש ${fmtKey(ek)} טרם פורסם`,'טרם פורסם'); return null; }
 
   const se = lookupNorm(sk);
   const ee = lookupNorm(ek);
   if (!se) { fail(`⚠️ אין נתון מדד עבור ${fmtKey(sk)}`,'חסר'); return null; }
   if (!ee) { fail(`⚠️ אין נתון מדד עבור ${fmtKey(ek)}`,'חסר'); return null; }
 
-  /* Both se.norm and ee.norm are now in base-2022 — safe to divide */
-  const ratio    = ee.norm / se.norm;
-  let   indexed  = amount * ratio;
-  const pct      = (ratio - 1) * 100;
+  const ratio   = ee.norm / se.norm;
+  let   indexed = amount * ratio;
+  const pct     = (ratio - 1) * 100;
   const isManual = se.manual || ee.manual;
   let   isFloor  = false;
 
-  /* ── FLOOR RULE: indexed cannot be less than original ── */
-  if (indexed < amount) {
-    indexed = amount;
-    isFloor = true;
-  }
+  if (indexed < amount) { indexed = amount; isFloor = true; }
 
   warnEl.style.display = 'none';
   pctEl.textContent = isFloor ? '0.00%' : (pct>=0?'+':'') + pct.toFixed(2)+'%';
@@ -786,12 +602,11 @@ function calcRow(id) {
   let badges = '';
   if (isManual) badges += '<br><span class="badge-manual">חושב לפי מדד ידני</span>';
   if (isFloor)  badges += '<br><span class="badge-floor">המדד ירד — הצמדה שלא תפחת מהקרן</span>';
-  /* index values — shown always, visible in print */
+
   const seRaw = se.manual ? manualData[sk] : apiData[sk];
   const eeRaw = ee.manual ? manualData[ek] : apiData[ek];
   badges += `<span class="idx-detail">מדד ${fmtKey(sk)}: ${seRaw} · מדד ${fmtKey(ek)}: ${eeRaw}</span>`;
 
-  /* fill print-only index cells */
   const idxS = document.getElementById(`idx-s-${id}`);
   const idxE = document.getElementById(`idx-e-${id}`);
   if (idxS) idxS.textContent = seRaw ?? '—';
@@ -821,38 +636,22 @@ function updateSummary(orig, idx, n) {
 }
 
 /* ══════════════════════════════════════════════════════
-   FETCH LATEST FROM CBS — button handler in manual panel
+   CBS FETCH — GAS Proxy + JSONP fallback
+   הדבק את ה-URL שלך מ-Google Apps Script:
 ══════════════════════════════════════════════════════ */
-/* ══════════════════════════════════════════════════════
-   CBS FETCH — דרך Google Apps Script Proxy
-   ─────────────────────────────────────────
-   GAS_PROXY: כתובת ה-Web App שהגדרת ב-Google Scripts.
-   שנה את הערך ל-URL שקיבלת אחרי ה-Deploy.
-   אם הכתובת ריקה או לא עובדת — JSONP ישיר כגיבוי.
-══════════════════════════════════════════════════════ */
+const GAS_PROXY = 'https://script.google.com/macros/s/AKfycbyKTJ4XE9QwLHFUKbHWmeJu2mDURNpSgHR0wh6zdNdytOBAABvcXgpHNyAeRkAizhro/exec';
 
-/* ← הדבק כאן את ה-URL שקיבלת מ-Google Apps Script */
-https://script.google.com/macros/s/AKfycbyKTJ4XE9QwLHFUKbHWmeJu2mDURNpSgHR0wh6zdNdytOBAABvcXgpHNyAeRkAizhro/exec
-
-/* ── parser: מטפל בכל מבני JSON אפשריים מהלמ"ס ── */
 function _parseCbsRecords(data) {
   let records = [];
-  const raw = data?.raw ?? data;   // GAS עוטף ב-.raw
-
-  if (Array.isArray(raw?.index_data))        records = raw.index_data;
-  else if (Array.isArray(raw?.index)) {
-    raw.index.forEach(s =>
-      (s.date || s.Date || []).forEach(d => records.push(d)));
-  } else if (Array.isArray(raw))             records = raw;
-  else if (Array.isArray(data?.index_data))  records = data.index_data;
-  else if (Array.isArray(data?.index)) {
-    data.index.forEach(s =>
-      (s.date || s.Date || []).forEach(d => records.push(d)));
-  }
+  const raw = data?.raw ?? data;
+  if (Array.isArray(raw?.index_data))   records = raw.index_data;
+  else if (Array.isArray(raw?.index)) { raw.index.forEach(s => (s.date||s.Date||[]).forEach(d => records.push(d))); }
+  else if (Array.isArray(raw))          records = raw;
+  else if (Array.isArray(data?.index_data)) records = data.index_data;
+  else if (Array.isArray(data?.index))  { data.index.forEach(s => (s.date||s.Date||[]).forEach(d => records.push(d))); }
   return records;
 }
 
-/* ── עדכון apiData מרשומות + שמירה ב-localStorage ── */
 function _applyRecords(records) {
   records.sort((a,b) => {
     const ka = `${a.year||a.Year}-${String(a.month||a.Month).padStart(2,'0')}`;
@@ -862,7 +661,7 @@ function _applyRecords(records) {
   let added = 0;
   records.forEach(d => {
     const m   = String(d.month??d.Month??'').padStart(2,'0');
-    const y   = String(d.year ??d.Year ??'');
+    const y   = String(d.year??d.Year??'');
     const val = Number(d.value??d.Value??0);
     if (m && y && val > 0) {
       const key = `${y}-${m}`;
@@ -873,7 +672,6 @@ function _applyRecords(records) {
   return { latest: records[0], added };
 }
 
-/* ── helper: מלא שדות הפאנל ── */
 function _fillCbsFields(month, year, value, msg) {
   const status = document.getElementById('fetchCbsStatus');
   const icon   = document.getElementById('fetchCbsIcon');
@@ -891,7 +689,6 @@ function _fillCbsFields(month, year, value, msg) {
   btn.disabled   = false;
 }
 
-/* ── helper: הצגת שגיאה ── */
 function _cbsError(msg) {
   const status = document.getElementById('fetchCbsStatus');
   const icon   = document.getElementById('fetchCbsIcon');
@@ -902,23 +699,11 @@ function _cbsError(msg) {
   btn.disabled   = false;
 }
 
-/* ── שליפה דרך Proxy (עוקף חסימות ב-GitHub) ── */
-async function _fetchViaGas() {
-  const targetUrl = 'https://cbs.gov.il';
-  const response = await fetch(`https://allorigins.win{encodeURIComponent(targetUrl)}`);
-  if (!response.ok) throw new Error('HTTP ' + response.status);
-  const wrapper   = await response.json();
-  const json      = JSON.parse(wrapper.contents);
-  return json;
-}
-
-/* ── JSONP fallback ── */
 function _cbsCleanupScript() {
   const s = document.getElementById('_cbsJsonpScript');
   if (s) s.remove();
 }
 
-/* callback גלובלי — נקרא ע"י JSONP */
 window.processCBSData = function(data) {
   clearTimeout(window._cbsTimer);
   _cbsCleanupScript();
@@ -927,7 +712,7 @@ window.processCBSData = function(data) {
     if (!records.length) throw new Error('אין רשומות');
     const { latest, added } = _applyRecords(records);
     const month = String(latest.month??latest.Month??'').padStart(2,'0');
-    const year  = String(latest.year ??latest.Year ??'');
+    const year  = String(latest.year??latest.Year??'');
     const value = Number(latest.value??latest.Value??0);
     if (!month||!year||!value) throw new Error('ערכים חסרים');
     _fillCbsFields(month, year, value,
@@ -948,73 +733,55 @@ function _fetchViaJsonp() {
   function tryNext() {
     _cbsCleanupScript();
     if (idx >= urls.length) { _cbsError('הלמ"ס לא הגיב'); return; }
-    const s  = document.createElement('script');
-    s.id     = '_cbsJsonpScript';
+    const s   = document.createElement('script');
+    s.id      = '_cbsJsonpScript';
     s.onerror = () => { idx++; tryNext(); };
-    s.src    = urls[idx++];
+    s.src     = urls[idx++];
     document.head.appendChild(s);
   }
   tryNext();
 }
 
-/* ── הפונקציה הראשית — נקראת מהכפתור ── */
 async function fetchLatestCbs() {
   const btn    = document.getElementById('btnFetchCbs');
   const icon   = document.getElementById('fetchCbsIcon');
   const status = document.getElementById('fetchCbsStatus');
-  
-  if (btn) btn.disabled = true;
-  if (icon) { icon.className = 'spin'; icon.textContent = '↺'; }
-  if (status) {
-    status.style.color = 'orange';
-    status.textContent = 'מתחבר לשרת הלמ"ס...';
+  btn.disabled = true;
+  icon.className = 'spin'; icon.textContent = '↺';
+  status.style.color = 'var(--text-muted)';
+  status.textContent = 'מתחבר לשרת הלמ"ס...';
+
+  window._cbsTimer = setTimeout(() => {
+    _cbsCleanupScript();
+    _cbsError('הלמ"ס לא הגיב (timeout)');
+  }, 12000);
+
+  /* נסה GAS proxy קודם */
+  if (GAS_PROXY) {
+    try {
+      const r = await fetch(GAS_PROXY);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const json    = await r.json();
+      if (json.success === false) throw new Error(json.error || 'GAS error');
+      clearTimeout(window._cbsTimer);
+      const records = _parseCbsRecords(json);
+      if (!records.length) throw new Error('אין רשומות');
+      const { latest, added } = _applyRecords(records);
+      const month = String(latest.month??latest.Month??'').padStart(2,'0');
+      const year  = String(latest.year??latest.Year??'');
+      const value = Number(latest.value??latest.Value??0);
+      _fillCbsFields(month, year, value,
+        `✓ הנתונים עודכנו בהצלחה מהלמ"ס! מדד ${MONTHS[parseInt(month,10)-1]} ${year} = ${value}` +
+        (added > 0 ? ` · נוספו ${added} מדדים` : ''));
+      return;
+    } catch(e) {
+      console.warn('GAS proxy failed, trying JSONP:', e.message);
+      status.textContent = 'ה-Proxy נכשל, מנסה JSONP...';
+    }
   }
 
-  const cbName = 'cbs_' + Date.now();
-  window[cbName] = function(data) {
-    if (data && data.monthly_data) {
-      const latest = data.monthly_data;
-      if (typeof _fillCbsFields === 'function') {
-        _fillCbsFields(String(latest.month).padStart(2,'0'), String(latest.year), latest.value);
-      }
-      if (status) {
-        status.textContent = `עודכן בהצלחה! מדד ${latest.month}/${latest.year} = ${latest.value}`;
-        status.style.color = 'green';
-      }
-    }
-    cleanup();
-  };
-
-  function cleanup() {
-    if (btn) btn.disabled = false;
-    if (icon) { icon.className = ''; icon.textContent = '🔍'; }
-    const script = document.getElementById('cbs-jsonp');
-    if (script) script.remove();
-    delete window[cbName];
-  }
-
-  const script = document.createElement('script'); 
-  script.id = 'cbs-jsonp';
-  script.src = "https://cbs.gov.il" + cbName;
-  script.onerror = () => {
-    if (status) { 
-      status.textContent = 'הלמ"ס לא הגיב - הזן ידנית.'; 
-      status.style.color = 'red'; 
-    }
-    cleanup();
-  };
-  document.body.appendChild(script);
-}
-
-function toggleMP() {
-  const body = document.getElementById('mpBody');
-  if (body) body.classList.toggle('open');
-}
-
-  /* JSONP fallback */
   _fetchViaJsonp();
 }
-
 
 /* ══════════════════════════════════════════════════════
    MANUAL PANEL
@@ -1025,99 +792,12 @@ function toggleMP() {
   chev.classList.toggle('open', body.classList.toggle('open'));
 }
 
-/* ══════════════════════════════════════════════════════
-   MANUAL PANEL — dynamic multi-row entry
-══════════════════════════════════════════════════════ */
-let manualRowCount = 0;
-
-function buildMonthOpts(sel) {
-  return MONTHS.map((m,i) => {
-    const v = String(i+1).padStart(2,'0');
-    return `<option value="${v}"${v===sel?' selected':''} >${m}</option>`;
-  }).join('');
-}
-function buildYearOpts(sel) {
-  const cur = new Date().getFullYear();
-  let h = '';
-  for (let y = cur+5; y >= 1951; y--)
-    h += `<option value="${y}"${y===Number(sel)?' selected':''} >${y}</option>`;
-  return h;
-}
-
-function addManualRow(month, year, value) {
-  const id  = ++manualRowCount;
-  const cur = new Date().getFullYear();
-  const div = document.createElement('div');
-  div.id        = `mrow-${id}`;
-  div.className = 'mp-form';
-  div.style.cssText = 'margin-bottom:8px;align-items:center';
-  div.innerHTML = `
-    <div class="mp-field">
-      <label>${id===1?'חודש':''}</label>
-      <select class="mr-month">${buildMonthOpts(month||'01')}</select>
-    </div>
-    <div class="mp-field">
-      <label>${id===1?'שנה':''}</label>
-      <select class="mr-year" style="min-width:90px">${buildYearOpts(year||String(cur))}</select>
-    </div>
-    <div class="mp-field" style="min-width:140px">
-      <label>${id===1?'ערך המדד (נקודות)':''}</label>
-      <input type="text" class="mr-val" placeholder="104.10"
-             value="${value||''}" autocomplete="off" style="direction:ltr;text-align:left">
-    </div>
-    <div class="mp-field" style="padding-top:${id===1?'18':'0'}px">
-      <button class="btn-del" onclick="document.getElementById('mrow-${id}').remove()" title="הסר">✕</button>
-    </div>`;
-  document.getElementById('manualRows').appendChild(div);
-}
-
-function initManualRows() {
-  const allKeys = [...Object.keys(apiData), ...Object.keys(manualData)].sort();
-  const latest  = allKeys[allKeys.length-1] || '';
-  const [ly, lm] = latest ? latest.split('-') : [String(new Date().getFullYear()),'12'];
-  let nm = parseInt(lm)+1, ny = parseInt(ly);
-  if (nm > 12) { nm=1; ny++; }
-  addManualRow(String(nm).padStart(2,'0'), String(ny), '');
-}
-
-function saveAllManualRows() {
-  const fb   = document.getElementById('mpFb');
-  const rows = document.querySelectorAll('#manualRows .mp-form');
-  let added  = 0, errors = [];
-  rows.forEach(row => {
-    const month = row.querySelector('.mr-month').value;
-    const year  = row.querySelector('.mr-year').value;
-    const raw   = row.querySelector('.mr-val').value.replace(',','.').trim();
-    if (!raw) return;
-    const val = parseFloat(raw);
-    if (isNaN(val) || val <= 0) { errors.push(`${year}-${month}`); return; }
-    manualData[`${year}-${month}`] = val;
-    added++;
-  });
-  if (added > 0) { saveManualData(); rebuildYearSelects(); renderManualList(); }
-  fb.style.display = 'block';
-  if (errors.length) {
-    fb.className   = 'mp-fb err';
-    fb.textContent = `✓ נשמרו ${added} · ⚠️ שגיאה: ${errors.join(', ')}`;
-  } else if (added > 0) {
-    fb.className   = 'mp-fb ok';
-    fb.textContent = `✓ נשמרו ${added} מדדים בהצלחה`;
-  } else {
-    fb.className   = 'mp-fb err';
-    fb.textContent = '⚠️ לא הוזנו ערכים';
-  }
-  setTimeout(() => { fb.style.display='none'; fb.textContent=''; }, 4000);
-}
-
-/* kept for fetchLatestCbs compatibility */
 function addManualIndex() {
   const fb      = document.getElementById('mpFb');
   const month   = document.getElementById('mMonth').value;
   const yearNum = Number(document.getElementById('mYear').value);
   const valRaw  = document.getElementById('mValue').value;
-
   fb.style.display='none'; fb.className='mp-fb'; fb.textContent='';
-
   if (!yearNum || yearNum < 1951 || yearNum > 2100) {
     fb.style.display='block'; fb.className='mp-fb err';
     fb.textContent='⚠️ שנה לא תקינה'; return;
@@ -1126,7 +806,7 @@ function addManualIndex() {
   const numVal   = parseFloat(cleanVal);
   if (!cleanVal || isNaN(numVal) || numVal <= 0) {
     fb.style.display='block'; fb.className='mp-fb err';
-    fb.textContent='⚠️ ערך מדד לא תקין — יש להזין מספר חיובי, לדוגמה: 103.5';
+    fb.textContent='⚠️ ערך מדד לא תקין';
     document.getElementById('mValue').focus(); return;
   }
   const yearStr = String(yearNum);
@@ -1154,7 +834,7 @@ function removeManualIndex(key) {
 
 function clearAllManual() {
   if (!Object.keys(manualData).length) return;
-  if (!confirm('למחוק את כל המדדים הידניים (כולל ברירות מחדל של 2026)?')) return;
+  if (!confirm('למחוק את כל המדדים הידניים?')) return;
   manualData = {};
   saveManualData();
   renderManualList();
@@ -1173,24 +853,16 @@ function renderManualList() {
     const tag   = document.createElement('div');
     tag.className = 'mp-tag';
     tag.innerHTML =
-      `<span>${MONTHS[parseInt(m)-1]} ${y} = <strong>${manualData[key]}</strong> <em style="font-weight:400;font-size:11px;opacity:.7">(בסיס 2024)</em></span>` +
+      `<span>${MONTHS[parseInt(m)-1]} ${y} = <strong>${manualData[key]}</strong></span>` +
       `<button class="tag-del" onclick="removeManualIndex('${key}')">✕</button>`;
     tags.appendChild(tag);
   });
 }
 
 /* ══════════════════════════════════════════════════════
-   KEYBOARD
-══════════════════════════════════════════════════════ */
-document.addEventListener('keydown', e => {
-  if (e.ctrlKey && e.key === 'Enter' && dataReady) calcAll();
-});
-
-/* ══════════════════════════════════════════════════════
-   PRINT
+   PRINT & KEYBOARD
 ══════════════════════════════════════════════════════ */
 function doPrint() {
-  /* hide description column if all rows have empty description */
   const tbl   = document.querySelector('table');
   const descs = [...document.querySelectorAll('#tableBody tr')]
     .map(r => r.querySelector('input[type="text"]')?.value?.trim() || '');
@@ -1198,6 +870,10 @@ function doPrint() {
   window.print();
   setTimeout(() => tbl.classList.remove('hide-desc'), 2000);
 }
+
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.key === 'Enter' && dataReady) calcAll();
+});
 
 /* ══════════════════════════════════════════════════════
    START
