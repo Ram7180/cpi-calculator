@@ -993,19 +993,9 @@ async function fetchLatestCbs() {
     delete window[cbName];
   }
 
-    const script = document.createElement('script');
+  const script = document.createElement('script'); 
   script.id = 'cbs-jsonp';
   script.src = "https://cbs.gov.il" + cbName;
-  script.onerror = () => {
-    if (status) { 
-      status.textContent = 'הלמ"ס לא הגיב - הזן ידנית.'; 
-      status.style.color = 'red'; 
-    }
-    cleanup();
-  };
-  const script = document.createElement('script');
-  script.id = 'cbs-jsonp';
-  script.src = "https://services.cbs.gov.il/api/cpi/index/120010?callback=" + cbName;
   script.onerror = () => {
     if (status) { 
       status.textContent = 'הלמ"ס לא הגיב - הזן ידנית.'; 
