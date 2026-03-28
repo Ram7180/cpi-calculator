@@ -973,6 +973,7 @@ async function fetchLatestCbs() {
   }, 12000);
 
   /* נסה GAS proxy קודם, אם הוגדר */
+  var GAS_PROXY = "";
   if (GAS_PROXY && GAS_PROXY !== '') {
     try {
       const json    = await _fetchViaGas();
